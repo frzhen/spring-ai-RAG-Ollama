@@ -24,10 +24,14 @@ repositories {
 
 extra["springAiVersion"] = "0.8.1"
 extra["openAPIVersion"] = "2.5.0"
+extra["tikaVersion"] = "1.0.0"
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.ai:spring-ai-ollama-spring-boot-starter")
+    // Tika document reader
+    implementation("io.springboot.ai:spring-ai-tika-document-reader:${property("tikaVersion")}")
+
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")

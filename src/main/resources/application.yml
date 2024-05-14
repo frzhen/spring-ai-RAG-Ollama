@@ -18,3 +18,12 @@ spring:
       chat:
         options:
           model: llama3
+      embedding:
+        options:
+          model: llama3
+ysy:
+  ai:
+    app:
+      vectorStorePath: /tmp/vectorStore.json
+      documentsToLoad:
+        - classpath:/movies50.csv
