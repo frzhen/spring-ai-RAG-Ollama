@@ -39,11 +39,12 @@ public class OllamaAIServiceImpl implements OllamaAIService {
                 SearchRequest.query(question.question()).withTopK(4));
         List<String> contentList = documents.stream().map(Document::getContent).toList();
 
-        PromptTemplate promptTemplate = new PromptTemplate(question.question());
+        PromptTemplate promptTemplate = new PromptTemplate(ragPromptTemplate);
         Prompt prompt = promptTemplate.create(Map.of(
                 "input", question.question(),
                 "documents", String.join("\n", contentList)
         ));
+        contentList.forEach(System.out::println);
         ChatResponse response = chatClient.call(prompt);
         return new Answer(response.getResult().getOutput().getContent());
     }

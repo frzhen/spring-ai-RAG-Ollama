@@ -26,4 +26,4 @@ ysy:
     app:
       vectorStorePath: /tmp/vectorStore.json
       documentsToLoad:
-        - classpath:/movies50.csv
+        - classpath:/school-contact.csv
