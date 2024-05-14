@@ -23,6 +23,7 @@ repositories {
 }
 
 extra["springAiVersion"] = "0.8.1"
+extra["openAPIVersion"] = "2.5.0"
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
@@ -30,6 +31,16 @@ dependencies {
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+    // OpenAPI
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:${property("openAPIVersion")}")
+    // lombok for test
+    testCompileOnly("org.projectlombok:lombok")
+    testAnnotationProcessor("org.projectlombok:lombok")
+
+    // explicit declare JUnit5 for testing ready for gradle 9
+    testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
@@ -41,4 +52,16 @@ dependencyManagement {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+    testLogging {
+        events("passed", "skipped", "failed")
+
+        showExceptions = true
+        setExceptionFormat("full")
+        showCauses = true
+        showStackTraces = true
+
+        showStandardStreams = true // show more verbose test output
+    }
+    // avoid dynamic agent loading warning for JDK21
+    jvmArgs("-XX:+EnableDynamicAgentLoading")
 }
