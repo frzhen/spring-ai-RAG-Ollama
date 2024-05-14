@@ -1,3 +1,7 @@
+#### ignore sensitive data file ###
+school-contact.csv
+
+###################
 HELP.md
 .gradle
 build/
