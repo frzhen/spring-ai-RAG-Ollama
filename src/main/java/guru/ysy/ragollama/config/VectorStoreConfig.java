@@ -33,12 +33,12 @@ public class VectorStoreConfig {
         } else {
             log.info("Loading documents into vector store...");
             vectorStoreProperties.getDocumentsToLoad().forEach( document -> {
-            log.info("Loading document: {}", document.getFilename());
-            TikaDocumentReader tikaReader = new TikaDocumentReader(document);
-            List<Document> docs = tikaReader.get();
-            TextSplitter textSplitter = new TokenTextSplitter();
-            List<Document> splitDocs = textSplitter.apply(docs);
-            store.add(splitDocs);
+                log.info("Loading document: {}", document.getFilename());
+                TikaDocumentReader tikaReader = new TikaDocumentReader(document);
+                List<Document> docs = tikaReader.get();
+                TextSplitter textSplitter = new TokenTextSplitter();
+                List<Document> splitDocs = textSplitter.apply(docs);
+                store.add(splitDocs);
             });
 
             store.save(vectorStoreFile);

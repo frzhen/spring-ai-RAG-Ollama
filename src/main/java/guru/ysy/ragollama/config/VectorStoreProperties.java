@@ -13,11 +13,12 @@ import java.util.List;
  * @Date: 2024/5/14 16:27
  * @Email: fred.zhen@gmail.com
  */
-@Getter
 @Setter
+@Getter
 @Configuration
-@ConfigurationProperties(prefix = "ysy.ai.app")
+@ConfigurationProperties(prefix = "ysy.aiapp")
 public class VectorStoreProperties {
     private String vectorStorePath;
     private List<Resource> documentsToLoad;
+
 }

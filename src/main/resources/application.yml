@@ -22,8 +22,7 @@ spring:
         options:
           model: llama3
 ysy:
-  ai:
-    app:
+  aiapp:
       vectorStorePath: /tmp/vectorStore.json
       documentsToLoad:
-        - classpath:/school-contact.csv
+        - classpath:/movies50Trimmed.csv
